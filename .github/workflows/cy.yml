@@ -22,9 +22,9 @@ jobs:
 
       - name: Set up Allure CLI
         run: |
-          wget https://github.com/allure-framework/allure2/releases/download/2.29.1/allure-2.29.1.tgz
-          tar -xvzf allure-2.29.1.tgz
-          sudo mv allure-2.29.1 /opt/allure
+          wget https://github.com/allure-framework/allure2/releases/download/2.27.0/allure-2.27.0.tgz
+          tar -xvzf allure-2.27.0.tgz
+          sudo mv allure-2.27.0 /opt/allure
           sudo ln -s /opt/allure/bin/allure /usr/bin/allure
           allure --version
 
