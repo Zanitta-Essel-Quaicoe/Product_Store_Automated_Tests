@@ -30,7 +30,11 @@ public class BaseTest {
             options.addArguments("--no-sandbox");
             options.addArguments("--disable-dev-shm-usage");
             options.addArguments("--disable-gpu");
-            options.addArguments("--user-data-dir=" + tempUserDataDir);
+            options.addArguments("--remote-debugging-port=9222");
+            options.addArguments("--window-size=1920,1080");
+
+            // Avoid user data conflicts in CI
+            options.addArguments("--user-data-dir=/tmp/chrome-user-data");
         }
 
         // Initialize WebDriver
