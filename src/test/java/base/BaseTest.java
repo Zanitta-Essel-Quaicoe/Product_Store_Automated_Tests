@@ -16,7 +16,7 @@ public class BaseTest {
     protected WebDriver driver;
 
     @BeforeEach
-    public void setUp() throws IOException{
+    public void setUp() throws IOException {
         // Setup ChromeDriver using WebDriverManager
         WebDriverManager.chromedriver().setup();
 
@@ -37,8 +37,8 @@ public class BaseTest {
             options.addArguments("--user-data-dir=/tmp/chrome-user-data");
         }
 
-        // Initialize WebDriver
-        driver = new ChromeDriver();
+        // Initialize WebDriver with options
+        driver = new ChromeDriver(options);
 
         // Maximize the browser window
         driver.manage().window().maximize();
