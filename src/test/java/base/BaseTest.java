@@ -5,17 +5,33 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 
 import java.time.Duration;
+import java.io.IOException;
+import java.nio.file.Files;
 
 public class BaseTest {
 
     protected WebDriver driver;
 
     @BeforeEach
-    public void setUp() {
+    public void setUp() throws IOException{
         // Setup ChromeDriver using WebDriverManager
         WebDriverManager.chromedriver().setup();
+
+        ChromeOptions options = new ChromeOptions();
+
+        // Run in headless mode only in CI
+        if (System.getenv("CI") != null && System.getenv("CI").equalsIgnoreCase("true")) {
+            // Running in GitHub Actions or another CI environment
+            String tempUserDataDir = Files.createTempDirectory("chrome-user-data").toString();
+            options.addArguments("--headless=new");  // or "--headless" for older versions
+            options.addArguments("--no-sandbox");
+            options.addArguments("--disable-dev-shm-usage");
+            options.addArguments("--disable-gpu");
+            options.addArguments("--user-data-dir=" + tempUserDataDir);
+        }
 
         // Initialize WebDriver
         driver = new ChromeDriver();

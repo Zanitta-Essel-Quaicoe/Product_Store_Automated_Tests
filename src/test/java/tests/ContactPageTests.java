@@ -6,6 +6,8 @@ import org.junit.jupiter.api.Test;
 import pages.ContactPage;
 import pages.HomePage;
 
+import java.io.IOException;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 public class ContactPageTests extends BaseTest {
@@ -13,7 +15,7 @@ public class ContactPageTests extends BaseTest {
     private ContactPage contactPage;
 
     @BeforeEach
-    public void setUp() {
+    public void setUp() throws IOException {
         super.setUp();
         homePage = new HomePage(driver);
         contactPage = new ContactPage(driver);
