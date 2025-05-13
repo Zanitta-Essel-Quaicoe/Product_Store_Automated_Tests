@@ -7,6 +7,8 @@ import pages.CartPage;
 import pages.HomePage;
 import pages.PlaceOrderPage;
 
+import java.io.IOException;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 public class PlaceOrderTests extends BaseTest {
@@ -14,7 +16,7 @@ public class PlaceOrderTests extends BaseTest {
     private PlaceOrderPage placeOrderPage;
 
     @BeforeEach
-    public void setUp() {
+    public void setUp() throws IOException {
         super.setUp();
         HomePage homePage = new HomePage(driver);
         cartPage = new CartPage(driver);
